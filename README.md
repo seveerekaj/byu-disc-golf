@@ -65,13 +65,17 @@ cd byu-disk-golf
 ```bash
 npm install
 ```
+If you encounter any isues running `npm install`, try prefacing the command with `sudo`, i.e. `sudo npm install`
 
 ### 4. Start the local development web server.
 
 ```bash
 npm run dev
 ```
-Other scripts for the BYU disk golf project can be found in the `package.json` file in the root directory of the project.
+If you encounter any isues running `npm run dev`, try prefacing the command with `sudo`, i.e. `sudo npm run dev`
+<br>
+<br>
+Other scripts for the BYU disk golf project (i.e. for running in a production environment or for testing) can be found in the `package.json` file in the root directory of the project.
 <br>
 These scripts are also summoned via the `npm run` command, followed by the script name
 
