@@ -1,0 +1,17 @@
+{
+  "name": "byu-disk-golf",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ENV=prod node ./bin/www",
+    "dev": "ENV=dev DEBUG=byu-disk-golf:* node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
+  }
+}
