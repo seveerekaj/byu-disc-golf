@@ -86,3 +86,15 @@ In your web browser, visit the url [localhost:3000](localhost:3000)
 <br>
 You should now see the BYU-disk-golf UI.
 <br>
+
+## Starting Frontend by itself
+
+While running `npm run dev` will start up the node server and display the UI, any changes that you make to the UI (located in [client](./client)) will not show up right away in the browser, you'll need to refresh.
+
+If you want to avoid needing to refresh the page then you can instead run
+
+```shell
+npm run client:serve
+```
+
+This will start up just the UI, without the node backend server, with Hot Module Reloading turned on.  This just means that as soon as you save a file the browser will refresh for you automatically so you can see your changes quicker.
