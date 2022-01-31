@@ -67,6 +67,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {"port": 3000},
           "configurations": {
             "production": {
               "browserTarget": "byu-disc-golf:build:production"

@@ -1,0 +1,27 @@
+{
+  "name": "byu-disk-golf",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ENV=prod sudo node ./bin/www",
+    "server:dev": "ENV=dev DEBUG=byu-disk-golf:* nodemon ./bin/www",
+    "client:dev": "npm run watch --prefix client",
+    "client:serve": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\""
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
