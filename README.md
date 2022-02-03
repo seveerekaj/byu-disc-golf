@@ -81,20 +81,19 @@ These scripts are also summoned via the `npm run` command, followed by the scrip
 
 ### 5. Connect to the web server
 
-In your web browser, visit the url [localhost:3000](localhost:3000)
+In your web browser, visit the url [localhost:4200](localhost:4200)
 <br>
 <br>
 You should now see the BYU-disk-golf UI.
 <br>
 
-## Starting Frontend by itself
+## File structure
 
-While running `npm run dev` will start up the node server and display the UI, any changes that you make to the UI (located in [client](./client)) will not show up right away in the browser, you'll need to refresh.
+Our project is split into two parts.  The frontend code is inside the [client](./client) folder while the server is inside the [server](./server) folder.
 
-If you want to avoid needing to refresh the page then you can instead run
+Running `npm run dev` will start both pieces for you at the same time allowing for concurrent development of both parts.
 
-```shell
-npm run client:serve
-```
+If for some reason you want to start only one part by itself then there are two options
 
-This will start up just the UI, without the node backend server, with Hot Module Reloading turned on.  This just means that as soon as you save a file the browser will refresh for you automatically so you can see your changes quicker.
+1. From the root of the project run `npm run <project>:dev`, i.e. `npm run client:dev`
+2. Navigate to the project you want to start and run `npm run dev` 
