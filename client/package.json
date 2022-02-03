@@ -1,5 +1,5 @@
 {
-  "name": "byu-disc-golf",
+  "name": "@byu-disc-golf/client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
