@@ -1,28 +1,26 @@
 {
-  "name": "byu-disk-golf",
-  "version": "0.0.0",
-  "private": true,
+  "name": "byu-disc-golf",
+  "version": "1.0.0",
+  "description": "There is an unofficial disc golf course on BYU campus. Because it is unofficial, there are no markers indicating where each hole starts or ends, or the par for each hole. `BYU Disk Golf` solves these issues showing users where they need to be, where they need to go, and everything else they need to know to have a great time playing disk golf. <br> <br> ## Initial Setup NodeJS must be installed in order to begin development. If you need assistance installing Node then please refer to [this video](https://www.youtube.com/watch?v=qh1E_U_Ywfw) or reach out to Connor Bunch.",
+  "main": "index.js",
   "scripts": {
-    "start": "ENV=prod sudo node ./bin/www",
-    "server:dev": "ENV=dev DEBUG=byu-disk-golf:* nodemon ./bin/www",
-    "client:dev": "npm run watch --prefix client",
-    "client:serve": "npm run start --prefix client",
+    "server:dev": "npm run dev --prefix server",
+    "client:dev": "npm run start --prefix client",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
-    "postinstall": "npm install --prefix client"
+    "postinstall": "concurrently \"npm install --prefix server\" \"npm install --prefix client\""
   },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1",
-    "nodemon": "^2.0.15"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seveerekaj/byu-disc-golf.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seveerekaj/byu-disc-golf/issues"
+  },
+  "homepage": "https://github.com/seveerekaj/byu-disc-golf#readme",
   "devDependencies": {
     "concurrently": "^7.0.0"
-  },
-  "prettier": {
-    "singleQuote": true
   }
 }

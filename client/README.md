@@ -41,3 +41,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Backend Proxy
+
+A backend proxy has been set up that will watch for every http request to `/api` and forward the request to our backend server running at [localhost:3000](localhost:3000).  That way we can develop our backend apis at the same time as our frontend code and it will behave as if they were running on the same server and port.
+
+#### Example
+```
+http.get('/api/users')
+```
+will forward to 
+```
+localhost:3000/api/users
+```
