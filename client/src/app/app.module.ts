@@ -11,9 +11,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { HoleInfoComponent } from './hole-info/hole-info.component';
+import { HolesComponent } from './holes/holes.component';
+import { HoleDetailsComponent } from './hole-details/hole-details.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent],
+  declarations: [AppComponent,
+    HomeComponent,
+    AboutComponent,
+    HoleInfoComponent,
+    HolesComponent,
+    HoleDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
