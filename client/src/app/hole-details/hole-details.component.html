@@ -1,3 +1,7 @@
-<h3>hole-details works!</h3>
-<p>TODO: display hole details here</p>
-{{hole?.title}}
+<h3>Details</h3>
+<p>
+    <b>Par:</b> {{hole?.par}}<br>
+    <b>Start at:</b> {{hole?.startDescr}}<br>
+    <b>Finish at:</b> {{hole?.endDescr}}<br>
+    <span *ngIf="hole?.constraints != null"><b>Constraints:</b> {{hole?.constraints}}</span>
+</p>

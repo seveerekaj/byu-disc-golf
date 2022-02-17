@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent {
   @ViewChild('sidenav') sideNav!: MatSidenav;
-  title = 'Byu Disc Golf';
+  title = 'BYU Disc Golf Course';
 
   constructor(private router: Router) {
     this.router.events
