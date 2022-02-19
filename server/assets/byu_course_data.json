@@ -12,20 +12,6 @@
     },
     {
         "sortId": 2,
-        "type": "Bonus Hole",
-        "bonusType": "boolean",
-        "bonusMaxPointsSubtract": 1,
-        "par": 1,
-        "startDescr": "Grass on East side of sidewalk",
-        "endDescr": "Top of the grate",
-        "constraints": "Disc must land on the grate without falling off",
-        "startLat": 40.251494,
-        "startLng": -111.646235,
-        "endLat": 40.251494,
-        "endLng": -111.646312
-    },
-    {
-        "sortId": 3,
         "type": "Hole",
         "par": 3,
         "startDescr": "South-East corner of MOA parking lot",
@@ -36,7 +22,7 @@
         "endLng": -111.646905
     },
     {
-        "sortId": 4,
+        "sortId": 3,
         "type": "Hole",
         "par": 3,
         "startDescr": "East end of the pond",
@@ -47,7 +33,7 @@
         "endLng": -111.647531
     },
     {
-        "sortId": 5,
+        "sortId": 4,
         "type": "Hole",
         "par": 2,
         "startDescr": "Grass at base of bell tower",
@@ -58,7 +44,7 @@
         "endLng": -111.647634
     },
     {
-        "sortId": 6,
+        "sortId": 5,
         "type": "Hole",
         "par": 4,
         "startDescr": "East end of Bean Museum parking lot",
@@ -69,7 +55,7 @@
         "endLng": -111.648161
     },
     {
-        "sortId": 7,
+        "sortId": 6,
         "type": "Hole",
         "par": 3,
         "startDescr": "South-East Marriot Center exit doors",
@@ -80,7 +66,7 @@
         "endLng": -111.649327
     },
     {
-        "sortId": 8,
+        "sortId": 7,
         "type": "Hole",
         "par": 3,
         "startDescr": "Balcony at South end of tunnel",
@@ -92,7 +78,7 @@
         "endLng": -111.649306
     },
     {
-        "sortId": 9,
+        "sortId": 8,
         "type": "Hole",
         "par": 4,
         "startDescr": "Sidewalk near South-East corner of ASB East parking lot",
@@ -103,7 +89,7 @@
         "endLng": -111.649426
     },
     {
-        "sortId": 10,
+        "sortId": 9,
         "type": "Hole",
         "par": 3,
         "startDescr": "Flagpole between ASB and the library",
@@ -114,21 +100,7 @@
         "endLng": -111.649654
     },
     {
-        "sortId": 11,
-        "type": "Bonus Hole",
-        "bonusType": "boolean",
-        "bonusMaxPointsSubtract": 1,
-        "par": 4,
-        "startDescr": "North-West corner of the library",
-        "endDescr": "Base of statue of Chief Massasoit",
-        "constraints": "Disc must be thrown with four fingers on top of disc and thumb on bottom of disc (Chickenwing or Barbeque throw)",
-        "startLat": 40.249158,
-        "startLng": -111.649911,
-        "endLat": 40.248278,
-        "endLng": -111.649825
-    },
-    {
-        "sortId": 12,
+        "sortId": 10,
         "type": "Hole",
         "par": 2,
         "startDescr": "Concrete surrounding Chief Massasoit plaque",
@@ -139,21 +111,7 @@
         "endLng": -111.650458
     },
     {
-        "sortId": 13,
-        "type": "Bonus Hole",
-        "bonusType": "boolean",
-        "bonusMaxPointsSubtract": 1,
-        "par": 1,
-        "startDescr": "East courtyard circle",
-        "endDescr": "East courtyard circle",
-        "constraints": "Disc must be thrown at edge of circle and caught as it comes off the other edge (centrifugal forces roll the disc all the way around)",
-        "startLat": 40.248111,
-        "startLng": -111.650458,
-        "endLat": 40.248111,
-        "endLng": -111.650458
-    },
-    {
-        "sortId": 14,
+        "sortId": 11,
         "type": "Hole",
         "par": 3,
         "startDescr": "East courtyard circle",
@@ -164,21 +122,7 @@
         "endLng": -111.650817
     },
     {
-        "sortId": 15,
-        "type": "Bonus Hole",
-        "bonusType": "boolean",
-        "bonusMaxPointsSubtract": 1,
-        "par": 1,
-        "startDescr": "Bottom of middle railing at ESC stairs",
-        "endDescr": "Top of middle railing at ESC stairs",
-        "constraints": "Thrower must stand at bottom of railing, with each foot on opposite sides of railing. Disc must pass through top section of railing",
-        "startLat": 40.247162,
-        "startLng": -111.650634,
-        "endLat": 40.247168,
-        "endLng": -111.650494
-    },
-    {
-        "sortId": 16,
+        "sortId": 12,
         "type": "Hole",
         "par": 4,
         "startDescr": "Top of ESC stairs",
@@ -189,20 +133,7 @@
         "endLng": -111.651959
     },
     {
-        "sortId": 17,
-        "type": "Bonus Hole",
-        "bonusType": "points",
-        "bonusMaxPointsSubtract": 7,
-        "startDescr": "At least ten feet from first bike rack West of JSB",
-        "endDescr": "Bike racks West of JSB",
-        "constraints": "Disc must pass through bike rack rails while in the air. 1 point off for each rail passed through before touching ground.",
-        "startLat": 40.246285,
-        "startLng": -111.652005,
-        "endLat": 40.246246,
-        "endLng": -111.652
-    },
-    {
-        "sortId": 18,
+        "sortId": 13,
         "type": "Hole",
         "par": 3,
         "startDescr": "Sidewalk at South-East corner of Brimhall building",
@@ -213,7 +144,7 @@
         "endLng": -111.653296
     },
     {
-        "sortId": 19,
+        "sortId": 14,
         "type": "Hole",
         "par": 6,
         "startDescr": "Speed limit sign on Campus Dr",
@@ -224,7 +155,7 @@
         "endLng": -111.650847
     },
     {
-        "sortId": 20,
+        "sortId": 15,
         "type": "Hole",
         "par": 5,
         "startDescr": "Beginning of sidewalk between ESC and Benson",
@@ -236,21 +167,7 @@
         "endLng": -111.648519
     },
     {
-        "sortId": 21,
-        "type": "Bonus Hole",
-        "bonusType": "boolean",
-        "bonusMaxPointsSubtract": 1,
-        "par": 1,
-        "startDescr": "Grass on West side of sidewalk",
-        "endDescr": "Rock with anchor at East entrance of Clyde building",
-        "constraints": "Disc must pass through anchor",
-        "startLat": 40.24708,
-        "startLng": -111.648627,
-        "endLat": 40.247083,
-        "endLng": -111.648519
-    },
-    {
-        "sortId": 22,
+        "sortId": 16,
         "type": "Hole",
         "par": 3,
         "startDescr": "Sidewalk between MARB and Clyde building",
@@ -261,7 +178,7 @@
         "endLng": -111.648549
     },
     {
-        "sortId": 23,
+        "sortId": 17,
         "type": "Hole",
         "par": 4,
         "startDescr": "Concrete between library and Bookstore",
@@ -272,7 +189,7 @@
         "endLng": -111.647845
     },
     {
-        "sortId": 24,
+        "sortId": 18,
         "type": "Hole",
         "par": 5,
         "startDescr": "Grate at West end of field",
