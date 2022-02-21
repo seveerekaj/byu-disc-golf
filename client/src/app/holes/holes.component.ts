@@ -14,7 +14,7 @@ export class HolesComponent implements OnInit {
     //TODO: get all holes info from backend query rather than hard-coding it here
     this.allHoles = [
       {
-          "sortId": 1,
+          "holeId": 1,
           "type": "Hole",
           "par": 3,
           "startDescr": "Top of stairs in grassy area within Heritage",
@@ -25,7 +25,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.64628
       },
       {
-          "sortId": 2,
+          "holeId": 2,
           "type": "Hole",
           "par": 3,
           "startDescr": "South-East corner of MOA parking lot",
@@ -36,7 +36,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.646905
       },
       {
-          "sortId": 3,
+          "holeId": 3,
           "type": "Hole",
           "par": 3,
           "startDescr": "East end of the pond",
@@ -47,7 +47,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.647531
       },
       {
-          "sortId": 4,
+          "holeId": 4,
           "type": "Hole",
           "par": 2,
           "startDescr": "Grass at base of bell tower",
@@ -58,7 +58,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.647634
       },
       {
-          "sortId": 5,
+          "holeId": 5,
           "type": "Hole",
           "par": 4,
           "startDescr": "East end of Bean Museum parking lot",
@@ -69,7 +69,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.648161
       },
       {
-          "sortId": 6,
+          "holeId": 6,
           "type": "Hole",
           "par": 3,
           "startDescr": "South-East Marriot Center exit doors",
@@ -80,7 +80,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.649327
       },
       {
-          "sortId": 7,
+          "holeId": 7,
           "type": "Hole",
           "par": 3,
           "startDescr": "Balcony at South end of tunnel",
@@ -92,7 +92,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.649306
       },
       {
-          "sortId": 8,
+          "holeId": 8,
           "type": "Hole",
           "par": 4,
           "startDescr": "Sidewalk near South-East corner of ASB East parking lot",
@@ -103,7 +103,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.649426
       },
       {
-          "sortId": 9,
+          "holeId": 9,
           "type": "Hole",
           "par": 3,
           "startDescr": "Flagpole between ASB and the library",
@@ -114,7 +114,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.649654
       },
       {
-          "sortId": 10,
+          "holeId": 10,
           "type": "Hole",
           "par": 2,
           "startDescr": "Concrete surrounding Chief Massasoit plaque",
@@ -125,7 +125,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.650458
       },
       {
-          "sortId": 11,
+          "holeId": 11,
           "type": "Hole",
           "par": 3,
           "startDescr": "East courtyard circle",
@@ -136,7 +136,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.650817
       },
       {
-          "sortId": 12,
+          "holeId": 12,
           "type": "Hole",
           "par": 4,
           "startDescr": "Top of ESC stairs",
@@ -147,7 +147,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.651959
       },
       {
-          "sortId": 13,
+          "holeId": 13,
           "type": "Hole",
           "par": 3,
           "startDescr": "Sidewalk at South-East corner of Brimhall building",
@@ -158,7 +158,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.653296
       },
       {
-          "sortId": 14,
+          "holeId": 14,
           "type": "Hole",
           "par": 6,
           "startDescr": "Speed limit sign on Campus Dr",
@@ -169,7 +169,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.650847
       },
       {
-          "sortId": 15,
+          "holeId": 15,
           "type": "Hole",
           "par": 5,
           "startDescr": "Beginning of sidewalk between ESC and Benson",
@@ -181,7 +181,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.648519
       },
       {
-          "sortId": 16,
+          "holeId": 16,
           "type": "Hole",
           "par": 3,
           "startDescr": "Sidewalk between MARB and Clyde building",
@@ -192,7 +192,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.648549
       },
       {
-          "sortId": 17,
+          "holeId": 17,
           "type": "Hole",
           "par": 4,
           "startDescr": "Concrete between library and Bookstore",
@@ -203,7 +203,7 @@ export class HolesComponent implements OnInit {
           "endLng": -111.647845
       },
       {
-          "sortId": 18,
+          "holeId": 18,
           "type": "Hole",
           "par": 5,
           "startDescr": "Grate at West end of field",

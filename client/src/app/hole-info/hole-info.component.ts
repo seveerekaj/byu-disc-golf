@@ -10,7 +10,7 @@ export class HoleInfoComponent implements OnInit {
 
   holeNumber: any;
   hole = {
-    "sortId": 1,
+    "holeId": 1,
     "type": "Hole",
     "par": 3,
     "startDescr": "Top of stairs in grassy area within Heritage",

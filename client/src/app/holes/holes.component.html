@@ -1,6 +1,6 @@
 <h1>Holes</h1>
 <mat-nav-list>
   <mat-list-item *ngFor='let hole of this.allHoles'>
-    <a matLine [routerLink]="['/hole/', hole.sortId]">Hole {{hole.sortId}}</a>
+    <a matLine [routerLink]="['/hole/', hole.holeId]">Hole {{hole.holeId}}</a>
   </mat-list-item>
 </mat-nav-list>
