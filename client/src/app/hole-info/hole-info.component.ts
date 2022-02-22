@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Goal } from '../goal';
+import { pluck, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hole-info',
@@ -8,25 +11,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HoleInfoComponent implements OnInit {
 
+  readonly GOAL_URL = '/api/course/hole/';
+  goal: any;
   holeNumber: any;
-  hole = {
-    "holeId": 1,
-    "type": "Hole",
-    "par": 3,
-    "startDescr": "Top of stairs in grassy area within Heritage",
-    "endDescr": "Pine tree near the sand volleyball court",
-    "constraints": "example constraints",
-    "startLat": 40.252769,
-    "startLng": -111.645783,
-    "endLat": 40.251537,
-    "endLng": -111.64628
-  };
+  hole$ = this.route.params
+  .pipe(pluck("id"),
+  switchMap(holeNumber=>{
+    return this.http.get<any>(this.GOAL_URL + holeNumber)
+  }));
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
+
+  }
 
   ngOnInit(): void {
     this.holeNumber = this.route.snapshot.paramMap.get('id');
-    // TODO: query the backend for hole with this id
+
+        // TODO: query the backend for hole with this id
   }
 
 }

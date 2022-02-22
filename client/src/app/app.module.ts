@@ -14,6 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { HoleInfoComponent } from './hole-info/hole-info.component';
 import { HolesComponent } from './holes/holes.component';
 import { HoleDetailsComponent } from './hole-details/hole-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent,
@@ -31,6 +32,7 @@ import { HoleDetailsComponent } from './hole-details/hole-details.component';
     MatButtonModule,
     MatIconModule,
     MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
