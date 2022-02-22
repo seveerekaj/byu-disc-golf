@@ -1,5 +1,11 @@
 <!-- TODO: Make better header bar -->
-<h1>Hole {{holeNumber}}</h1>
+<div *ngIf = "hole$ | async as hole">
+  <h1>Hole {{hole.hole.holeId}}</h1>
 
-<p>map goes here</p>
-<app-hole-details [hole]="hole"></app-hole-details>
+  <p>map goes here</p>
+
+  <app-hole-details [hole]="hole.hole"></app-hole-details>
+  <a matLine [routerLink]="['/hole', +hole.hole.holeId+1]">
+    <button>GO TO NEXT GOAL</button>
+  </a>
+</div>
