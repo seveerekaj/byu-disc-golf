@@ -1,0 +1,11 @@
+:host {
+  display: grid;
+  place-content: center;
+  height: 100%;
+}
+
+.start-button {
+--button-text-size: 16px
+  line-height: calc(var(--button-text-size) * 3);
+  font-size: var(--button-text-size);
+}
