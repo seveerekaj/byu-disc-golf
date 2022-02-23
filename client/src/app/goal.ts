@@ -1,5 +1,5 @@
 export interface Goal {
-  sortId: number;
+  holeId: number;
   type: string;
   par: number;
   startDescr: string;

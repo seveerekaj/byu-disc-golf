@@ -15,6 +15,8 @@ import { HoleInfoComponent } from './hole-info/hole-info.component';
 import { HolesComponent } from './holes/holes.component';
 import { HoleDetailsComponent } from './hole-details/hole-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { HoleMapComponent } from './hole-map/hole-map.component';
 
 @NgModule({
   declarations: [AppComponent,
@@ -22,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     AboutComponent,
     HoleInfoComponent,
     HolesComponent,
-    HoleDetailsComponent],
+    HoleDetailsComponent,
+    HoleMapComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

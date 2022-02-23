@@ -1,11 +1,12 @@
 <!-- TODO: Make better header bar -->
-<div *ngIf = "hole$ | async as hole">
+<div *ngIf="hole$ | async as hole">
   <h1>Hole {{hole.hole.holeId}}</h1>
 
-  <p>map goes here</p>
+  <app-hole-map [hole]="hole.hole"></app-hole-map>
 
   <app-hole-details [hole]="hole.hole"></app-hole-details>
-  <a [disabled]="hole.hole.holeId === 1" mat-raised-button color="accent" style="margin-right: 10px" [routerLink]="['/hole', +hole.hole.holeId-1]">
+  <a [disabled]="hole.hole.holeId === 1" mat-raised-button color="accent" style="margin-right: 10px"
+    [routerLink]="['/hole', +hole.hole.holeId-1]">
     GO TO PREVIOUS GOAL
   </a>
   <a mat-raised-button color="accent" [routerLink]="['/hole', +hole.hole.holeId+1]">
