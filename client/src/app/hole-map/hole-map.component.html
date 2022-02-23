@@ -1,4 +1,4 @@
-  <google-map #discMap [options]="mapOptions">
+  <google-map #discMap [options]="mapOptions" [width]="screenWidth" [height]="screenHeight - 500">
 
-    <map-marker *ngFor="let marker of markers" [position]="marker"></map-marker>
+    <map-marker *ngFor="let marker of markers" [position]="marker.getPosition()!"></map-marker>
   </google-map>
