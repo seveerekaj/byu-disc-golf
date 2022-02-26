@@ -1,5 +1,5 @@
 export interface Goal {
-  sortId: number;
+  holeId: number;
   type: string;
   par: number;
   startDescr: string;
@@ -8,5 +8,11 @@ export interface Goal {
   startLat: number;
   startLng: number;
   endLat: number;
-  endLng: number
+  endLng: number;
+  bound: 'first'|'last'|'none';
+}
+
+export interface GoalWrapper {
+  hole: Goal;
+  message: string;
 }
