@@ -1,33 +1,35 @@
 <!-- TODO: Make better header bar -->
 <div *ngIf="hole$ | async as hole">
-  <h1>Hole {{ hole.hole.holeId }}</h1>
+  <h1>Hole {{ hole.holeId }}</h1>
 
   <google-map
     [options]="mapOptions"
-    [center]="{ lat: hole.hole.startLat, lng: hole.hole.startLng }"
+    [center]="{ lat: hole.startLat, lng: hole.startLng }"
+    [width]="width"
   >
     <map-marker
-      [position]="{ lat: hole.hole.startLat, lng: hole.hole.startLng }"
+      [position]="{ lat: hole.startLat, lng: hole.startLng }"
     ></map-marker>
     <map-marker
-      [position]="{ lat: hole.hole.endLat, lng: hole.hole.endLng }"
+      [position]="{ lat: hole.endLat, lng: hole.endLng }"
     ></map-marker>
   </google-map>
 
-  <app-hole-details [hole]="hole.hole"></app-hole-details>
+  <app-hole-details [hole]="hole"></app-hole-details>
   <a
-    [disabled]="hole.hole.holeId === 1"
+    [disabled]="first$ | async"
     mat-raised-button
     color="accent"
     style="margin-right: 10px"
-    [routerLink]="['/hole', +hole.hole.holeId - 1]"
+    [routerLink]="(first$ | async) ? null : ['/hole', +hole.holeId - 1]"
   >
     GO TO PREVIOUS GOAL
   </a>
   <a
+    [disabled]="last$ | async"
     mat-raised-button
     color="accent"
-    [routerLink]="['/hole', +hole.hole.holeId + 1]"
+    [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]"
   >
     GO TO NEXT GOAL
   </a>

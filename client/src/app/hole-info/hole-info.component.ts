@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Goal } from '../goal';
+import { Goal, GoalWrapper } from '../goal';
 import { GoogleMap } from '@angular/google-maps';
 
-import { pluck, switchMap } from 'rxjs/operators';
+import { pluck, switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hole-info',
@@ -22,8 +22,11 @@ export class HoleInfoComponent implements OnInit {
   hole$ = this.route.params
   .pipe(pluck("id"),
   switchMap(holeNumber=>{
-    return this.http.get<any>(this.GOAL_URL + holeNumber)
+    return this.http.get<GoalWrapper>(this.GOAL_URL + holeNumber).pipe(pluck('hole'));
   }));
+
+  first$ = this.hole$.pipe(pluck('bound'), map(bound=>bound==='first'));
+  last$ = this.hole$.pipe(pluck('bound'), map(bound=>bound==='last'));
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {
 
@@ -34,8 +37,11 @@ export class HoleInfoComponent implements OnInit {
     mapTypeId: 'satellite'
   }
 
+  width!:number;
+
   ngOnInit(): void {
     this.holeNumber = this.route.snapshot.paramMap.get('id');
+    this.width = window.innerWidth;
     //current location
     /*navigator.geolocation.getCurrentPosition((position) => {
       this.center = {
