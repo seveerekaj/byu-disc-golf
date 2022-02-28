@@ -1,6 +1,8 @@
 <!-- TODO: Make better header bar -->
 <div *ngIf="hole$ | async as hole">
-  <h1>Hole {{ hole.holeId }}</h1>
+  <mat-card>
+    <h1>Hole {{ hole.holeId }}</h1>
+  </mat-card>
 
   <google-map
     [options]="mapOptions"
@@ -15,8 +17,20 @@
     ></map-marker>
   </google-map>
 
-  <app-hole-details [hole]="hole"></app-hole-details>
-  <a
+  <mat-card>
+    <app-hole-details [hole]="hole"></app-hole-details>
+  </mat-card>
+
+  <mat-list>
+  <mat-list-item><a
+    [disabled]="last$ | async"
+    mat-raised-button
+    color="accent"
+    [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]"
+  >
+    GO TO NEXT GOAL
+  </a></mat-list-item>
+  <mat-list-item><a
     [disabled]="first$ | async"
     mat-raised-button
     color="accent"
@@ -24,13 +38,6 @@
     [routerLink]="(first$ | async) ? null : ['/hole', +hole.holeId - 1]"
   >
     GO TO PREVIOUS GOAL
-  </a>
-  <a
-    [disabled]="last$ | async"
-    mat-raised-button
-    color="accent"
-    [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]"
-  >
-    GO TO NEXT GOAL
-  </a>
+  </a></mat-list-item>
+  </mat-list>
 </div>
