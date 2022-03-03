@@ -16,9 +16,8 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   readonly GOAL_URL = '/api/course/hole/';
   goal: any;
-  holeNumber: any;
   center: any;
-
+  width!: number;
   destroyed$ = new Subject();
 
   @ViewChild('holeMap') holeMap!: google.maps.Map;
@@ -47,6 +46,7 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.destroyed$.next({});
     this.destroyed$.complete();
   }
+
   ngAfterViewInit(): void {
     this.markers$
       .pipe(takeUntil(this.destroyed$))
@@ -66,19 +66,16 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     mapTypeId: 'satellite'
   }
 
-  width!: number;
 
   ngOnInit(): void {
-    this.holeNumber = this.route.snapshot.paramMap.get('id');
     this.width = window.innerWidth;
-    //current location
+    // TODO: get current location
     /*navigator.geolocation.getCurrentPosition((position) => {
       this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }
     })*/
-    // TODO: query the backend for hole with this id
   }
 
 }
