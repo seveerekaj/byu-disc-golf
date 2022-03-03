@@ -1,22 +1,25 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Goal, GoalWrapper } from '../goal';
 import { GoogleMap } from '@angular/google-maps';
 
-import { pluck, switchMap, map } from 'rxjs/operators';
+import { pluck, switchMap, map, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-hole-info',
   templateUrl: './hole-info.component.html',
   styleUrls: ['./hole-info.component.css']
 })
-export class HoleInfoComponent implements OnInit, AfterViewInit {
+export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   readonly GOAL_URL = '/api/course/hole/';
   goal: any;
   holeNumber: any;
   center: any;
+
+  destroyed$ = new Subject();
 
   @ViewChild('holeMap') holeMap!: google.maps.Map;
 
@@ -40,16 +43,22 @@ export class HoleInfoComponent implements OnInit, AfterViewInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) {
 
   }
+  ngOnDestroy(): void {
+    this.destroyed$.next({});
+    this.destroyed$.complete();
+  }
   ngAfterViewInit(): void {
-    this.markers$.subscribe(markers=>{
-      if(this.holeMap){
-        const bounds = new google.maps.LatLngBounds();
-        for (const marker of markers) {
-          bounds.extend(marker);
+    this.markers$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(markers => {
+        if (this.holeMap) {
+          const bounds = new google.maps.LatLngBounds();
+          for (const marker of markers) {
+            bounds.extend(marker);
+          }
+          this.holeMap.fitBounds(bounds, 100);
         }
-        this.holeMap.fitBounds(bounds, 100);
-      }
-    })
+      })
   }
 
   mapOptions = {
