@@ -11,7 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { HoleInfoComponent } from './hole-info/hole-info.component';
 import { HolesComponent } from './holes/holes.component';
 import { HoleDetailsComponent } from './hole-details/hole-details.component';
@@ -19,12 +18,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [AppComponent,
+  declarations: [
+    AppComponent,
     HomeComponent,
-    AboutComponent,
     HoleInfoComponent,
     HolesComponent,
-    HoleDetailsComponent],
+    HoleDetailsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,4 +41,4 @@ import { MatCardModule } from '@angular/material/card';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

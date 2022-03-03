@@ -6,15 +6,10 @@
 
   <google-map
     [options]="mapOptions"
-    [center]="{ lat: hole.startLat, lng: hole.startLng }"
     [width]="width"
+    #holeMap
   >
-    <map-marker
-      [position]="{ lat: hole.startLat, lng: hole.startLng }"
-    ></map-marker>
-    <map-marker
-      [position]="{ lat: hole.endLat, lng: hole.endLng }"
-    ></map-marker>
+    <map-marker *ngFor="let marker of markers$ | async" [position]="marker"></map-marker>
   </google-map>
 
   <mat-card>
