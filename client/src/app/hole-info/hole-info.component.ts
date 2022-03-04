@@ -32,16 +32,18 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   first$ = this.hole$.pipe(pluck('bound'), map(bound => bound === 'first'));
   last$ = this.hole$.pipe(pluck('bound'), map(bound => bound === 'last'));
 
+  markerSize = 80;
+
   markers$ = this.hole$.pipe(map(hole =>
     [
       {
         position: { lat: hole.startLat, lng: hole.startLng },
-        icon: { url: 'assets/Goal Marker-green.svg', scaledSize: new google.maps.Size(50, 50)},
+        icon: { url: 'assets/Goal Marker-green.svg', scaledSize: new google.maps.Size(this.markerSize, this.markerSize)},
         label: 'Start'
       },
       {
         position: { lat: hole.endLat, lng: hole.endLng },
-        icon: { url: 'assets/Goal Marker-red.svg', scaledSize: new google.maps.Size(50, 50) },
+        icon: { url: 'assets/Goal Marker-red.svg', scaledSize: new google.maps.Size(this.markerSize, this.markerSize) },
         label: 'End'
       }
     ]
