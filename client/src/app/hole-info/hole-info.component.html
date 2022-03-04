@@ -4,12 +4,9 @@
     <h1>Hole {{ hole.holeId }}</h1>
   </mat-card>
 
-  <google-map
-    [options]="mapOptions"
-    [width]="width"
-    #holeMap
-  >
-    <map-marker *ngFor="let marker of markers$ | async" [position]="marker"></map-marker>
+  <google-map [options]="mapOptions" [width]="width" #holeMap>
+    <map-marker *ngFor="let marker of markers$ | async" [position]="marker.position" [options]="{icon: marker.icon}" [label]="marker.label">
+    </map-marker>
   </google-map>
 
   <mat-card>
@@ -17,22 +14,13 @@
   </mat-card>
 
   <mat-list>
-  <mat-list-item><a
-    [disabled]="last$ | async"
-    mat-raised-button
-    color="accent"
-    [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]"
-  >
-    GO TO NEXT GOAL
-  </a></mat-list-item>
-  <mat-list-item><a
-    [disabled]="first$ | async"
-    mat-raised-button
-    color="accent"
-    style="margin-right: 10px"
-    [routerLink]="(first$ | async) ? null : ['/hole', +hole.holeId - 1]"
-  >
-    GO TO PREVIOUS GOAL
-  </a></mat-list-item>
+    <mat-list-item><a [disabled]="last$ | async" mat-raised-button color="accent"
+        [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]">
+        GO TO NEXT GOAL
+      </a></mat-list-item>
+    <mat-list-item><a [disabled]="first$ | async" mat-raised-button color="accent" style="margin-right: 10px"
+        [routerLink]="(first$ | async) ? null : ['/hole', +hole.holeId - 1]">
+        GO TO PREVIOUS GOAL
+      </a></mat-list-item>
   </mat-list>
 </div>

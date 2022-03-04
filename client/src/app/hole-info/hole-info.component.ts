@@ -34,8 +34,16 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   markers$ = this.hole$.pipe(map(hole =>
     [
-      { lat: hole.startLat, lng: hole.startLng },
-      { lat: hole.endLat, lng: hole.endLng }
+      {
+        position: { lat: hole.startLat, lng: hole.startLng },
+        icon: { url: 'assets/Goal Marker-green.svg', scaledSize: new google.maps.Size(50, 50)},
+        label: 'Start'
+      },
+      {
+        position: { lat: hole.endLat, lng: hole.endLng },
+        icon: { url: 'assets/Goal Marker-red.svg', scaledSize: new google.maps.Size(50, 50) },
+        label: 'End'
+      }
     ]
   ));
 
@@ -54,7 +62,7 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
         if (this.holeMap) {
           const bounds = new google.maps.LatLngBounds();
           for (const marker of markers) {
-            bounds.extend(marker);
+            bounds.extend(marker.position);
           }
           this.holeMap.fitBounds(bounds, 100);
         }
