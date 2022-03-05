@@ -5,7 +5,7 @@
   </mat-card>
 
   <google-map [options]="mapOptions" [width]="width" #holeMap>
-    <map-marker *ngFor="let marker of markers$ | async" [position]="marker.position" [options]="{icon: marker.icon}" [label]="marker.label">
+    <map-marker *ngFor="let marker of markers$ | async" [position]="marker.position" [options]="{icon: marker.icon}">
     </map-marker>
   </google-map>
 
