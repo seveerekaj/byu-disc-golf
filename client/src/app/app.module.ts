@@ -17,6 +17,7 @@ import { HolesComponent } from './holes/holes.component';
 import { HoleDetailsComponent } from './hole-details/hole-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [AppComponent,
@@ -37,6 +38,7 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     GoogleMapsModule,
     MatCardModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

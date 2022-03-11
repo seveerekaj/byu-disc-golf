@@ -1,7 +1,54 @@
 <!-- TODO: Make better header bar -->
 <div *ngIf="hole$ | async as hole">
   <mat-card>
-    <h1>Hole {{ hole.holeId }}</h1>
+    <!-- TODO: Add total score -->
+    <h2>Hole {{ hole.holeId }} • Par {{ hole.par }} • Total Score </h2>
+  </mat-card>
+
+  <mat-card>
+    <app-hole-details [hole]="hole"></app-hole-details>
+  </mat-card>
+
+<!-- TODO: Inputted score should link to backend -->
+  <mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>ENTER YOUR SCORE</mat-label>
+    <input matInput>
+  </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+  <a
+    [disabled]="first$ | async"
+    mat-raised-button
+    color="accent"
+    style="margin-right: 10px"
+    [routerLink]="(first$ | async) ? null : ['/hole', +hole.holeId - 1]"
+  >
+    PREVIOUS HOLE
+  </a>
+  <a
+    [disabled]="last$ | async"
+    mat-raised-button
+    color="accent"
+    [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]"
+  >
+    NEXT HOLE
+  </a>
+  </mat-card>
+
+<!-- TODO: Get actual group code -->
+  <mat-card>
+    <div class="wrap">
+    <p><b>GROUP CODE: 1234</b></p>
+    <a
+    mat-raised-button
+    color="accent"
+    style="margin-right: 10px"
+    >
+    SCOREBOARD
+  </a>
+  </div>
   </mat-card>
 
   <google-map
@@ -17,27 +64,4 @@
     ></map-marker>
   </google-map>
 
-  <mat-card>
-    <app-hole-details [hole]="hole"></app-hole-details>
-  </mat-card>
-
-  <mat-list>
-  <mat-list-item><a
-    [disabled]="last$ | async"
-    mat-raised-button
-    color="accent"
-    [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]"
-  >
-    GO TO NEXT GOAL
-  </a></mat-list-item>
-  <mat-list-item><a
-    [disabled]="first$ | async"
-    mat-raised-button
-    color="accent"
-    style="margin-right: 10px"
-    [routerLink]="(first$ | async) ? null : ['/hole', +hole.holeId - 1]"
-  >
-    GO TO PREVIOUS GOAL
-  </a></mat-list-item>
-  </mat-list>
 </div>
