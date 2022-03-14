@@ -8,7 +8,7 @@ const fs = require('fs');
 
 var holes;
 
-var loadHolesFile = function() {
+const loadHolesFile = function() {
     fs.readFile('public/json/byu_course_data.json', 'utf8', function(err, data) {
         if (err) {
             console.error(err);
@@ -19,22 +19,26 @@ var loadHolesFile = function() {
     });
 }
 
-var getHole = function(holeNumber, next) {
-    console.log("In the get hole funciton");
+const getHole = function(holeNumber, next) {
     for (let i = 0; i < holes.length; i++) {
-        console.log("Checking hole " + i);
-        console.log(holes[i]);
         if (holes[i]["holeId"] == holeNumber) {
-            next(holes[i]);
+            next(null, holes[i]);
             return;
         }
     }
-    next();
+    next(null);
     return;
 }
+
+const getCourse = function(next) {
+    next(null, holes);
+}
+
+
 
 loadHolesFile();
 
 module.exports = {
-    getHole
+    getHole,
+    getCourse
 }

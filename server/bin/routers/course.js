@@ -5,45 +5,40 @@
 "use strict";
 var express = require('express');
 var router = express.Router();
-const path = require('path');
 
 var templates = require('./response-templates');
-var holeService = require('../service/hole_service');
-
-let projectPath = path.resolve(__dirname, '../');
+var courseService = require('../service/course-service');
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  var response = templates.success_template;
-  var msg = "Welcome to the BYU Disk Golf API. ";
-  msg += "To get more information about a specific hole, ";
-  msg += "please target the path \"/course/hole/<hole number>\". ";
-  msg += "and be sure to replace <hole number> with the number of ";
-  msg += "the hole which you would like to query.";
-  response["message"] = msg;
-  res.json(response);
+router.get('/', function (req, res) {
+    var response;
+    courseService.getCourse(function(err, course) {
+        if (err) {
+            response = templates.makeFailureMsg("An error occurred getting the course");
+        } else {
+            response = templates.makeSuccessMsg("Here is the course!");
+            response["course"] = course;
+        }
+        res.json(response);
+    });
 });
 
-router.get('/hole/', function(req, res) {
-  var response = templates.success_template;
-  response.message = "Please provide a hole number in the URL.";
-  res.json(response);
+router.get('/hole/', function (req, res) {
+    res.json(templates.makeSuccessMsg("Please provide a hole number in the URL."));
 });
 
-router.get('/hole/:holeNumber', function(req, res) {
-  var holeNumber = req.params.holeNumber;
-  var response;
-  holeService.getHole(holeNumber, function(hole) {
-    if (hole) {
-      response = templates.success_template;
-      response.message = "Information for hole " + holeNumber;
-      response["hole"] = hole;
-    } else {
-      response = templates.failure_template;
-      response.message = holeNumber + ": invalid hole number. Please provide a valid hole number and try agian.";
-    }
-    res.json(response);
-  });
+router.get('/hole/:holeNumber', function (req, res) {
+    var holeNumber = req.params.holeNumber;
+    var response;
+    courseService.getHole(holeNumber, function (err, hole) {
+        if (hole) {
+            response = templates.makeSuccessMsg("Information for hole " + holeNumber);
+            response["hole"] = hole;
+        } else {
+            response = templates.makeFailureMsg(holeNumber + ": invalid hole number. Please provide a valid hole number and try agian.");
+        }
+        res.json(response);
+    });
 });
 
 module.exports = router;

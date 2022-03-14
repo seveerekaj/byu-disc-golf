@@ -51,17 +51,9 @@
   </div>
   </mat-card>
 
-  <google-map
-    [options]="mapOptions"
-    [center]="{ lat: hole.startLat, lng: hole.startLng }"
-    [width]="width"
-  >
-    <map-marker
-      [position]="{ lat: hole.startLat, lng: hole.startLng }"
-    ></map-marker>
-    <map-marker
-      [position]="{ lat: hole.endLat, lng: hole.endLng }"
-    ></map-marker>
+  <google-map [options]="mapOptions" [width]="width" #holeMap>
+    <map-marker *ngFor="let marker of markers$ | async" [position]="marker.position" [options]="{icon: marker.icon}">
+    </map-marker>
   </google-map>
 
 </div>
