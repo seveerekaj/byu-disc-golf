@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HoleInfoComponent } from './hole-info/hole-info.component';
 import { HolesComponent } from './holes/holes.component';
 import { HomeComponent } from './home/home.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component'
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     component: HolesComponent,
     path: 'holes',
+  },
+  {
+    component: ScoreboardComponent,
+    path: 'scores',
   },
   {
     redirectTo: '/home',

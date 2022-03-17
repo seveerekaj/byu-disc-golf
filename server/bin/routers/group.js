@@ -43,10 +43,12 @@ router.get('/group-id/:groupId', function(req, res) {
     response["players"] = [
         {
             "playerId": "123456",
-            "nickname": "Sassy Blast"
+            "nickname": "Sassy Blast",
+            "score": -1
         },{
             "playerId": "123457",
-            "nickname": "Nice Icicle"
+            "nickname": "Nice Icicle",
+            "score": 0
         }
     ];
     response["scores"] = [
