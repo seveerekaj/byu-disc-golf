@@ -1,21 +1,23 @@
 <!-- TODO: Make better header bar -->
 <div *ngIf="hole$ | async as hole">
-  <h1>Hole {{ hole.holeId }}</h1>
+  <mat-card>
+    <!-- TODO: Add total score -->
+    <h2>Hole {{ hole.holeId }} • Par {{ hole.par }} • Total Score </h2>
+  </mat-card>
 
-  <google-map
-    [options]="mapOptions"
-    [center]="{ lat: hole.startLat, lng: hole.startLng }"
-    [width]="width"
-  >
-    <map-marker
-      [position]="{ lat: hole.startLat, lng: hole.startLng }"
-    ></map-marker>
-    <map-marker
-      [position]="{ lat: hole.endLat, lng: hole.endLng }"
-    ></map-marker>
-  </google-map>
+  <mat-card>
+    <app-hole-details [hole]="hole"></app-hole-details>
+  </mat-card>
 
-  <app-hole-details [hole]="hole"></app-hole-details>
+<!-- TODO: Inputted score should link to backend -->
+  <mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>ENTER YOUR SCORE</mat-label>
+    <input matInput>
+  </mat-form-field>
+  </mat-card>
+
+  <mat-card>
   <a
     [disabled]="first$ | async"
     mat-raised-button
@@ -23,7 +25,7 @@
     style="margin-right: 10px"
     [routerLink]="(first$ | async) ? null : ['/hole', +hole.holeId - 1]"
   >
-    GO TO PREVIOUS GOAL
+    PREVIOUS HOLE
   </a>
   <a
     [disabled]="last$ | async"
@@ -31,6 +33,27 @@
     color="accent"
     [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]"
   >
-    GO TO NEXT GOAL
+    NEXT HOLE
   </a>
+  </mat-card>
+
+<!-- TODO: Get actual group code -->
+  <mat-card>
+    <div class="wrap">
+    <p><b>GROUP CODE: 1234</b></p>
+    <a mat-raised-button color="accent" style="margin-right: 10px" routerLink="/scores">SCOREBOARD</a>
+  </div>
+  </mat-card>
+
+  <google-map [options]="mapOptions" [width]="width" #holeMap>
+    <map-marker
+      #markerElem="mapMarker"
+      *ngFor="let marker of markers$ | async"
+      [position]="marker.position"
+      [options]="{icon: marker.icon}"
+      (mapClick)="openInfoWindow(markerElem, marker.info)">
+    </map-marker>
+    <map-info-window>{{ infoContent }}</map-info-window>
+  </google-map>
+
 </div>
