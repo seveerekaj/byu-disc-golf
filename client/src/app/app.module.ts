@@ -17,6 +17,8 @@ import { HoleDetailsComponent } from './hole-details/hole-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+import { MatExpansionModule } from '@angular/material/expansion'
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     HoleInfoComponent,
     HolesComponent,
-    HoleDetailsComponent
+    HoleDetailsComponent,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { MatInputModule } from '@angular/material/input';
     GoogleMapsModule,
     MatCardModule,
     MatInputModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent],

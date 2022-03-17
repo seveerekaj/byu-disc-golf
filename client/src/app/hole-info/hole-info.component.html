@@ -41,19 +41,19 @@
   <mat-card>
     <div class="wrap">
     <p><b>GROUP CODE: 1234</b></p>
-    <a
-    mat-raised-button
-    color="accent"
-    style="margin-right: 10px"
-    >
-    SCOREBOARD
-  </a>
+    <a mat-raised-button color="accent" style="margin-right: 10px" routerLink="/scores">SCOREBOARD</a>
   </div>
   </mat-card>
 
   <google-map [options]="mapOptions" [width]="width" #holeMap>
-    <map-marker *ngFor="let marker of markers$ | async" [position]="marker.position" [options]="{icon: marker.icon}">
+    <map-marker
+      #markerElem="mapMarker"
+      *ngFor="let marker of markers$ | async"
+      [position]="marker.position"
+      [options]="{icon: marker.icon}"
+      (mapClick)="openInfoWindow(markerElem, marker.info)">
     </map-marker>
+    <map-info-window>{{ infoContent }}</map-info-window>
   </google-map>
 
 </div>
