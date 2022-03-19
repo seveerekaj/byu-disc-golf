@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Goal, GoalWrapper } from '../goal';
-import { GoogleMap } from '@angular/google-maps';
+import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 
 import { pluck, switchMap, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -21,6 +21,8 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   destroyed$ = new Subject();
 
   @ViewChild('holeMap') holeMap!: google.maps.Map;
+  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
+  infoContent = ''
 
 
   hole$ = this.route.params
@@ -39,15 +41,22 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
       {
         position: { lat: hole.startLat, lng: hole.startLng },
         icon: { url: 'assets/start-marker.svg', scaledSize: new google.maps.Size(this.markerSize, this.markerSize)},
-        label: 'Start'
+        label: 'Start',
+        info: 'Start at: ' + hole.startDescr
       },
       {
         position: { lat: hole.endLat, lng: hole.endLng },
         icon: { url: 'assets/goal-marker.svg', scaledSize: new google.maps.Size(this.markerSize, this.markerSize) },
-        label: 'End'
+        label: 'End',
+        info: 'Finish at: ' + hole.endDescr
       }
     ]
   ));
+
+  openInfoWindow(marker: MapMarker, content: string) {
+    this.infoContent = content
+    this.infoWindow.open(marker)
+  }
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {
 
