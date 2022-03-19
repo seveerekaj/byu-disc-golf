@@ -1,14 +1,20 @@
+"use strict";
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var courseRouter = require('./routers/course');
-var groupRouter = require('./routers/group');
-var scoreRouter = require('./routers/score');
+var courseRouter = require('./routers/course-router');
+var groupRouter = require('./routers/group-router');
+var scoreRouter = require('./routers/score-router');
 
 var app = express();
+
+// This is where we decide what type of database to use
+var sqliteDatabase = require('./data-access/database/sqlite-database');
+var sqlDatabase = require('./data-access/database/sql-database');
+sqlDatabase.setDatabase(sqliteDatabase);
 
 app.use(logger('dev'));
 app.use(express.json());

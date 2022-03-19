@@ -3,8 +3,8 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "ENV=prod sudo node ./bin/www",
-        "dev": "ENV=dev DEBUG=byu-disk-golf:* nodemon ./bin/www"
+        "start": "ENV=prod sudo node ./lib/www",
+        "dev": "ENV=dev DEBUG=server:* nodemon ./lib/www"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",

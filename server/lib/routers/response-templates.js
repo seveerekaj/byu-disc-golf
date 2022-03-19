@@ -21,9 +21,14 @@ const makeFailureMsg = function(msg) {
     return makeMsg("failure", msg);
 }
 
+const makeInternalServerErrorMsg = function() {
+    return makeMsg("failure", "Internal server error. Please try again.");
+}
+
 module.exports = {
 
     makeSuccessMsg,
-    makeFailureMsg
+    makeFailureMsg,
+    makeInternalServerErrorMsg
 
 };
