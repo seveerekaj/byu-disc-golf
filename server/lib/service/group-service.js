@@ -176,6 +176,9 @@ var postScore = function(playerId, hole, score, next) {
 
 var buildScoresObject = function(scores) {
     var playerScores = [];
+    if (scores == null) {
+        return playerScores;
+    }
     for (let i = 0; i < scores.length; i++) {
         var score = {}
         score["hole"] = scores[i].hole;
