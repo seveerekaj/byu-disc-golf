@@ -14,10 +14,7 @@ export class HomeComponent implements OnInit {
   startGame(name:string, code:string) {
     if (code == ""){
       this.http.post("/api/group/new-group", {"nickname" : name}).subscribe((data)=>  {
-
       this.response=data;
-      console.log("new", this.response.groupCode);
-
       this.group.groupCode= this.response.groupCode;
       this.group.groupId= this.response.groupId;
       this.group.nickName= this.response.nickName;
@@ -27,12 +24,11 @@ export class HomeComponent implements OnInit {
   } else {
     this.http.post("/api/group/join-group", {"nickname" : name}).subscribe((data)=>  {
       this.response=data;
-      console.log("joinGroup");
 
       this.group.groupCode= this.response.groupCode;
       this.group.groupId= this.response.groupId;
       this.group.nickName= this.response.nickName;
-      
+
       this.router.navigate(["/hole/1"]);
     })
   } 
