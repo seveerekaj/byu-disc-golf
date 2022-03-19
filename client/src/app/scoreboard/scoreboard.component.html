@@ -2,9 +2,13 @@
 <mat-accordion>
     <mat-expansion-panel *ngFor="let score of scoreboard$ | async">
         <mat-expansion-panel-header>
-            <mat-panel-title>{{score.nickname}}</mat-panel-title>
-            <mat-panel-description>{{score.score}}</mat-panel-description>    
+            <mat-panel-title>{{score.player}}</mat-panel-title>
+            <mat-panel-description>Total Score: {{score.total}}</mat-panel-description>
         </mat-expansion-panel-header>
-        <p>show scores for each hole here</p>
+        <pre>
+          <code>
+            {{score.scores | json}}
+          </code>
+        </pre>
     </mat-expansion-panel>
 </mat-accordion>
