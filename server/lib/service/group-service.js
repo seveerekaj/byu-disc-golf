@@ -217,7 +217,7 @@ var buildGroupScoreBoard = function(group, next) {
                     console.error(err);
                     next(err);
                 } else {
-                    next(null, group, scoreBoard);
+                    next(null, group, scoreBoard, players);
                 }
             });
         }

@@ -87,14 +87,19 @@ router.get('/group-id/', function(req, res) {
 
 router.get('/group-id/:groupId', function(req, res) {
     var groupId = req.params.groupId;
-    groupService.getGroup(groupId, function(err, group, scoreboard) {
+    groupService.getGroup(groupId, function(err, group, scoreboard, players) {
         if (err) {
             res.json(templates.makeFailureMsg(err.message));
         } else {
-            var result = {}
-            result["group"] = group;
-            result["scoreboard"] = scoreboard;
-            res.json(result);
+            if (group == null) {
+                res.json(templates.makeFailureMsg("Group does not exist"));
+            } else {
+                var result = templates.makeSuccessMsg("Successfully retrieved group")
+                result["group"] = group;
+                result["scoreboard"] = scoreboard;
+                result["players"] = players
+                res.json(result);
+            }
         }
     });
 });
