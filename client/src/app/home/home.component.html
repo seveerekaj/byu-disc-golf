@@ -7,7 +7,7 @@
       <h2>Enter your name to host or join a group game:</h2>
     </div>
     <div>
-      <input matInput placeholder="Your Name" />
+      <input class="input" #name matInput placeholder="Your Name" />
     </div>
   </div>
   <div>
@@ -15,17 +15,17 @@
       <h2>Join a group game by entering the group code here:</h2>
     </div>
     <div>
-      <input matInput placeholder="4-Digit Group Code" />
+      <input matInput #code placeholder="4-Digit Group Code" />
     </div>
   </div>
   <div>
-    <a
+    <button
       class="start-button"
       mat-raised-button
       color="accent"
-      routerLink="/hole/1"
+      (click)="startGame(name.value, code.value)"
     >
       START A GAME
-    </a>
+    </button>
   </div>
 </div>
