@@ -1,11 +1,22 @@
 :host {
-  display: grid;
-  place-content: center;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.main-container {
+  padding: 10%;
 }
 
 .start-button {
 --button-text-size: 16px
   line-height: calc(var(--button-text-size) * 3);
   font-size: var(--button-text-size);
+  margin-top: 20px;
+  background-color: #3F51B5;
+}
+
+.input {
+  height: 45px;
+  background-color: aliceblue;
 }
