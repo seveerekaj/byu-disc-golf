@@ -1,7 +1,7 @@
 export interface Player {
-    playerId: number;
-    nickname: string;
-    score: number
+    playerID: number;
+    nickName: string;
+    groupId: number;
 }
 
 export interface HoleScore {
@@ -19,5 +19,5 @@ export interface ScoreboardWrapper {
     groupId: string;
     state: string;
     players: Player[];
-    scores: playerHoleScores[]
+    scoreboard: playerHoleScores;
 }

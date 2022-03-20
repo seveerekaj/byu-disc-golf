@@ -40,7 +40,7 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     [
       {
         position: { lat: hole.startLat, lng: hole.startLng },
-        icon: { url: 'assets/start-marker.svg', scaledSize: new google.maps.Size(this.markerSize, this.markerSize)},
+        icon: { url: 'assets/start-marker.svg', scaledSize: new google.maps.Size(this.markerSize, this.markerSize) },
         label: 'Start',
         info: 'Start at: ' + hole.startDescr
       },
@@ -95,6 +95,14 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
         lng: position.coords.longitude,
       }
     })*/
+  }
+
+  score!:number;
+  submitScore(score: number) {
+    this.hole$.pipe(
+      pluck('holeId'),
+      switchMap(holeId => this.http.post('/api/group/post-score', { holeId, playerId: 1, score }))
+    ).subscribe();
   }
 
 }

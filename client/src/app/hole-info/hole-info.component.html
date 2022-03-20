@@ -13,8 +13,9 @@
   <mat-card>
   <mat-form-field appearance="fill">
     <mat-label>ENTER YOUR SCORE</mat-label>
-    <input matInput>
+    <input #scoreInput matInput type="number">
   </mat-form-field>
+    <button mat-raised-button color="accent" (click)="submitScore(+scoreInput.value); scoreInput.value = ''">Submit Score</button>
   </mat-card>
 
   <mat-card>
