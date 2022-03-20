@@ -4,8 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Goal, GoalWrapper } from '../goal';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 
-import { pluck, switchMap, map, takeUntil } from 'rxjs/operators';
+import { pluck, switchMap, map, takeUntil, withLatestFrom } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { GroupService } from '../group.service';
 
 @Component({
   selector: 'app-hole-info',
@@ -58,7 +59,7 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.infoWindow.open(marker)
   }
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, public groupService: GroupService) {
 
   }
   ngOnDestroy(): void {
@@ -97,11 +98,12 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     })*/
   }
 
-  score!:number;
+  score!: number;
   submitScore(score: number) {
     this.hole$.pipe(
       pluck('holeId'),
-      switchMap(holeId => this.http.post('/api/group/post-score', { holeId, playerId: 1, score }))
+      withLatestFrom(this.groupService.playerId$),
+      switchMap(([holeId, playerId]) => this.http.post('/api/group/post-score', { holeId, playerId, score }))
     ).subscribe();
   }
 

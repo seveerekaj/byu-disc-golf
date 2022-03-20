@@ -41,7 +41,7 @@
 <!-- TODO: Get actual group code -->
   <mat-card>
     <div class="wrap">
-    <p><b>GROUP CODE: 1234</b></p>
+    <p><b>GROUP CODE: {{groupService.groupCode$ | async }}</b></p>
     <a mat-raised-button color="accent" style="margin-right: 10px" routerLink="/scores">SCOREBOARD</a>
   </div>
   </mat-card>
