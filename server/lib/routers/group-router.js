@@ -112,9 +112,9 @@ router.post('/join-group', function(req, res) {
                 response = templates.makeFailureMsg("Error joining group: " + err.message);
             } else {
                 response = templates.makeSuccessMsg("Successfully joined group");
-                response["group-code"] = groupCode;
-                response["group-id"] = groupId;
-                response["player-id"] = playerId;
+                response["groupCode"] = groupCode;
+                response["groupId"] = groupId;
+                response["playerId"] = playerId;
                 response["nickname"] = req.body["nickname"];
             }
             res.json(response);

@@ -7,7 +7,7 @@
       <h2>Enter your name to host or join a group game:</h2>
     </div>
     <div>
-      <input class="input" #name matInput placeholder="Your Name" />
+      <mat-form-field><input #name matInput placeholder="Your Name" /></mat-form-field>
     </div>
   </div>
   <div>
@@ -15,7 +15,7 @@
       <h2>Join a group game by entering the group code here:</h2>
     </div>
     <div>
-      <input matInput #code placeholder="4-Digit Group Code" />
+      <mat-form-field><input matInput #code placeholder="4-Digit Group Code" (keyup)="code.value = code.value.toUpperCase()"/></mat-form-field>
     </div>
   </div>
   <div>

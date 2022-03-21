@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Config } from 'browserslist';
+import { Group } from '../group.model';
 import { GroupService } from '../group.service';
 
 @Component({
@@ -10,31 +11,25 @@ import { GroupService } from '../group.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  response: any;
-  startGame(name:string, code:string) {
-    if (code == ""){
-      this.http.post("/api/group/new-group", {"nickname" : name}).subscribe((data)=>  {
-      this.response=data;
-      this.group.groupCode= this.response.groupCode;
-      this.group.groupId= this.response.groupId;
-      this.group.nickName= this.response.nickName;
+  startGame(name: string, code: string) {
+    const responseHandler = (data: Group) => {
+      console.log(data);
+      this.group.setGroupCode(data.groupCode);
+      this.group.setGroupId(data.groupId);
+      this.group.setNickname(data.nickname);
+      this.group.setPlayerId(data.playerId);
 
       this.router.navigate(["/hole/1"]);
-    })
-  } else {
-    this.http.post("/api/group/join-group", {"nickname" : name}).subscribe((data)=>  {
-      this.response=data;
+    }
 
-      this.group.groupCode= this.response.groupCode;
-      this.group.groupId= this.response.groupId;
-      this.group.nickName= this.response.nickName;
-
-      this.router.navigate(["/hole/1"]);
-    })
-  } 
+    if (code == "") {
+      this.http.post<Group>("/api/group/new-group", { "nickname": name }).subscribe(responseHandler)
+    } else {
+      this.http.post<Group>("/api/group/join-group", { "nickname": name, "group-code": code }).subscribe(responseHandler)
+    }
   }
 
-  constructor(private http:HttpClient, private router:Router, private group:GroupService) { 
+  constructor(private http: HttpClient, private router: Router, private group: GroupService) {
   }
 
   ngOnInit(): void {
