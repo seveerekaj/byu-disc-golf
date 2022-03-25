@@ -13,7 +13,7 @@ import { GroupService } from '../group.service';
 export class ScoreboardComponent implements OnInit {
 
   readonly SCOREBOARD_URL = '/api/group/group-id/';
-  // todo: call endpoint with actual group Id isnstead of hard-coded 1234
+
   scoreboard$ = this.groupService.groupId$.pipe(
     switchMap(groupId => {
       return this.http.get<ScoreboardWrapper>(this.SCOREBOARD_URL + groupId).pipe(map(result => {
@@ -26,11 +26,16 @@ export class ScoreboardComponent implements OnInit {
           }
           final.push(item);
         }
+        final.sort((a, b) => {
+          return a.total - b.total;
+        });
         return final;
       }));
 
     })
   )
+
+  columnsToDisplay = ['hole', 'throws'];
 
   constructor(private http: HttpClient, private groupService: GroupService) { }
 

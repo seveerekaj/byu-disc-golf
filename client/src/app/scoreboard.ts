@@ -5,7 +5,7 @@ export interface Player {
 }
 
 export interface HoleScore {
-    holdId: number;
+    hole: number;
     score: number;
 }
 
