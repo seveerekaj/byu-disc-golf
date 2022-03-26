@@ -16,3 +16,9 @@ export interface GoalWrapper {
   hole: Goal;
   message: string;
 }
+
+export interface CourseWrapper {
+  status: string;
+  message: string;
+  course: Goal[];
+}
