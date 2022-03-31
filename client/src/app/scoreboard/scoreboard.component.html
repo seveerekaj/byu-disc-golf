@@ -3,7 +3,7 @@
     <mat-expansion-panel *ngFor="let score of scoreboard$ | async">
         <mat-expansion-panel-header>
             <mat-panel-title>{{score.player}}</mat-panel-title>
-            <mat-panel-description>Total Score: {{score.total}}</mat-panel-description>
+            <mat-panel-description>Total Score: {{score.total}} | Total Throws: {{score.totalThrows}}</mat-panel-description>
         </mat-expansion-panel-header>
 
         <table mat-table [dataSource]="score.scores">
@@ -11,6 +11,11 @@
             <ng-container matColumnDef="hole">
                 <th mat-header-cell *matHeaderCellDef> Hole </th>
                 <td mat-cell *matCellDef="let entry"> {{entry.hole}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="par">
+                <th mat-header-cell *matHeaderCellDef> Par </th>
+                <td mat-cell *matCellDef="let entry"> {{entry.par}} </td>
             </ng-container>
 
             <ng-container matColumnDef="throws">
