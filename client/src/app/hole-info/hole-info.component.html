@@ -12,7 +12,7 @@
 <!-- TODO: Inputted score should link to backend -->
   <mat-card>
   <mat-form-field appearance="fill">
-    <mat-label>ENTER YOUR SCORE</mat-label>
+    <mat-label>ENTER THROWS</mat-label>
     <input #scoreInput matInput type="number">
   </mat-form-field>
     <button mat-raised-button color="accent" (click)="submitScore(+scoreInput.value); scoreInput.value = ''">Submit Score</button>
