@@ -16,6 +16,16 @@
   background-color: #3F51B5;
 }
 
+.group-button {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.img-header{
+  width: 100%;
+  height: auto;
+}
+
 .input {
   height: 45px;
   background-color: aliceblue;
