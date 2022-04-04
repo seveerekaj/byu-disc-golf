@@ -66,7 +66,7 @@ var getPlayersByGroupId = function(groupId, next) {
     debug("Finding player by ID");
     let query = `SELECT PlayerID, NickName, CreationDateTime, GroupID\n`;
     query += `FROM Player\n`;
-    query += `WHERE GroupID = '${groupId}';`
+    query += `WHERE GroupID = '${groupId}';`;
     database.query(query, function(err, data) {
         if (err) {
             console.error(err);
