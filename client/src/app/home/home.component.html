@@ -1,3 +1,31 @@
-<a class="start-button" mat-raised-button color="accent" routerLink="/hole/1">
-    START THE COURSE
-</a>
+<div class="main-container">
+  <div>
+    <h1>Welcome to the BYU disc golf course!</h1>
+  </div>
+  <div>
+    <div>
+      <h2>Enter your name to host or join a group game:</h2>
+    </div>
+    <div>
+      <mat-form-field><input #name matInput placeholder="Your Name" /></mat-form-field>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h2>Join a group game by entering the group code here:</h2>
+    </div>
+    <div>
+      <mat-form-field><input matInput #code placeholder="4-Digit Group Code" (keyup)="code.value = code.value.toUpperCase()"/></mat-form-field>
+    </div>
+  </div>
+  <div>
+    <button
+      class="start-button"
+      mat-raised-button
+      color="accent"
+      (click)="startGame(name.value, code.value)"
+    >
+      START A GAME
+    </button>
+  </div>
+</div>

@@ -12,9 +12,10 @@
 <!-- TODO: Inputted score should link to backend -->
   <mat-card>
   <mat-form-field appearance="fill">
-    <mat-label>ENTER YOUR SCORE</mat-label>
-    <input matInput>
+    <mat-label>ENTER THROWS</mat-label>
+    <input #scoreInput matInput type="number">
   </mat-form-field>
+    <button mat-raised-button color="accent" (click)="submitScore(+scoreInput.value); scoreInput.value = ''">Submit Score</button>
   </mat-card>
 
   <mat-card>
@@ -40,7 +41,7 @@
 <!-- TODO: Get actual group code -->
   <mat-card>
     <div class="wrap">
-    <p><b>GROUP CODE: 1234</b></p>
+    <p><b>GROUP CODE: {{groupService.groupCode$ | async }}</b></p>
     <a mat-raised-button color="accent" style="margin-right: 10px" routerLink="/scores">SCOREBOARD</a>
   </div>
   </mat-card>
