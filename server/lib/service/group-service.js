@@ -11,6 +11,7 @@ var groupModel = require('../model/group-model');
 var playerModel = require('../model/player-model');
 var scoreModel = require('../model/score-model');
 var debug = require('debug')('server:group-service');
+var sharedService = require('./shared-service');
 
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 const CODE_LENGTH = 4;
@@ -24,10 +25,7 @@ function generateString(length) {
   return result;
 }
 
-var getTimeUTCString = function () {
-  var now = new Date();
-  return now.toUTCString();
-}
+
 
 var findGroup = function (groupCode, next) {
   if (groupCode == null) {
@@ -66,7 +64,7 @@ var createGroup = function (nickName, next) {
     if (err) {
       next(new Error("Couldn't find a unique group code"));
     } else {
-      var group = new groupModel(null, code, getTimeUTCString());
+      var group = new groupModel(null, code, sharedService.getTimeUTCString());
       groupDAO.addGroup(group, function (err) {
         if (err) {
           console.error(err);

@@ -4,31 +4,30 @@
 
 "use strict";
 var express = require('express');
+var scoreService = require('../service/score-service');
 var router = express.Router();
 
 var templates = require('./response-templates');
 
 router.get('/', function (req, res) {
-    let response = templates.makeSuccessMsg("Here is the scoreboard");
-    response["scoreBoard"] = [
-        {
-            "position": 1,
-            "playerInitials": "CRB",
-            "finalScore": 25
-        },{
-            "position": 2,
-            "playerInitials": "MRT",
-            "finalScore": 32
+    scoreService.getScoreboard(function(err, scores) {
+        var response;
+        if (err) {
+            response = templates.makeFailureMsg(err.message);
+        } else {
+            response = templates.makeSuccessMsg("Scoreboard loaded successfully");
+            response['scoreBoard'] = scores;
         }
-    ]
-    res.json(response);
+        res.json(response);
+    });
 });
 
 router.post('/post-score', function(req, res) {
-    var response;
     if (req.body["initials"] && req.body["finalScore"]) {
-        response = templates.makeSuccessMsg("successfully posted score of " + req.body["finalScore"]);
-        res.json(response);
+        scoreService.postScore(req.body["finalScore"], req.body["initials"], function(err) {
+            if (err) return res.json(templates.makeFailureMsg(err.message));
+            res.json(templates.makeSuccessMsg("successfully posted score of " + req.body["finalScore"]));
+        });        
     } else {
         res.json(templates.makeFailureMsg("Please provide your initials and final score"));
     }

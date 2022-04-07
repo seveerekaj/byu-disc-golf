@@ -35,7 +35,7 @@ var getGroupById = function(groupId, next) {
 var getGroupByCode = function(code, next) {
     let query = `SELECT PlayerGroupID, GroupCode, CreationDateTime\n`;
     query += `FROM PlayerGroup\n`;
-    query += `WHERE GroupCode = '${code}';`
+    query += `WHERE GroupCode = '${code}';`;
     database.query(query, function(err, data) {
         if (err) {
             console.error(err);

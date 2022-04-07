@@ -52,7 +52,7 @@ var getScoreByPlayerIdAndHole = function(playerId, hole, next) {
     debug("Finding score by player ID and hole number");
     let query = `SELECT ScoreID, Score, Hole, PlayerID, CreationDateTime\n`;
     query += `FROM Score\n`;
-    query += `WHERE PlayerID = '${playerId}' AND Hole = '${hole}';`
+    query += `WHERE PlayerID = '${playerId}' AND Hole = '${hole}';`;
     database.query(query, function(err, data) {
         if (err) {
             console.error(err);
