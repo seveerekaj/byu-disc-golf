@@ -1,23 +1,36 @@
 <div class="main-container">
+  <div><img class="img-header" src="../../assets/targets-header.jpg" /></div>
   <div>
     <h1>Welcome to the BYU disc golf course!</h1>
   </div>
+
   <div>
     <div>
-      <h2>Enter your name to host or join a group game:</h2>
+      <h2>Enter your name here:</h2>
     </div>
     <div>
-      <mat-form-field><input #name matInput placeholder="Your Name" /></mat-form-field>
+      <mat-form-field
+        ><input #name matInput placeholder="Your Name"
+      /></mat-form-field>
     </div>
   </div>
-  <div>
+
+  <div [hidden]="!groupGame">
     <div>
-      <h2>Join a group game by entering the group code here:</h2>
+      <h2>Enter the group code here:</h2>
     </div>
+
     <div>
-      <mat-form-field><input matInput #code placeholder="4-Digit Group Code" (keyup)="code.value = code.value.toUpperCase()"/></mat-form-field>
+      <mat-form-field
+        ><input
+          matInput
+          #code
+          placeholder="4-Digit Group Code"
+          (keyup)="code.value = code.value.toUpperCase()"
+      /></mat-form-field>
     </div>
   </div>
+
   <div>
     <button
       class="start-button"
@@ -25,7 +38,8 @@
       color="accent"
       (click)="startGame(name.value, code.value)"
     >
-      START A GAME
+      {{ buttonText }}
     </button>
+    <div class="group-button" (click)="setGroupGame()">{{ subButtonText }}</div>
   </div>
 </div>
