@@ -11,7 +11,7 @@ import { HighScoreResponse } from '../scoreboard';
 export class HighScoreComponent implements OnInit {
 
   highScores$ = this.http.get<HighScoreResponse>('/api/score/').pipe(pluck('scoreBoard'));
-  columnsToDisplay = ['initials','finalScore'];
+  columnsToDisplay = ['index','initials','finalScore'];
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {

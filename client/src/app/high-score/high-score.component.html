@@ -1,6 +1,11 @@
 <h1>High Scores</h1>
 <table mat-table [dataSource]="highScores$">
 
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let index = index"> {{index + 1}} </td>
+  </ng-container>
+
   <ng-container matColumnDef="initials">
     <th mat-header-cell *matHeaderCellDef> Initials </th>
     <td mat-cell *matCellDef="let entry"> {{entry.initials}} </td>
