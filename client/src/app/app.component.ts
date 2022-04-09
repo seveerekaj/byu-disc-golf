@@ -13,7 +13,7 @@ export class AppComponent {
   @ViewChild('sidenav') sideNav!: MatSidenav;
   title = 'BYU Disc Golf Course';
 
-  constructor(private router: Router, private groupService: GroupService) {
+  constructor(private router: Router, public groupService: GroupService) {
     this.router.events
       .pipe(filter((a) => a instanceof NavigationEnd))
       .subscribe(() => this.sideNav.close());

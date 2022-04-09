@@ -29,7 +29,7 @@
     </table>
 
     <div
-      *ngIf="score.playerId === ( groupService.playerId$ | async ) && score.scores.length === (allHoles$ | async)?.length"
+      *ngIf="score.playerId === ( groupService.playerId$ | async ) && ( score.scores.length >= (allHoles$ | async)?.length! )"
       [style.margin-top]="'20px'">
       <mat-form-field><input matInput placeholder="Initals" #initials type="text" maxlength="3"></mat-form-field>
       <button mat-raised-button color="primary" (click)="submitHighScore(initials.value)" [disabled]="!initials.value"

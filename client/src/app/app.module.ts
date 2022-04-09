@@ -19,7 +19,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 import { MatExpansionModule } from '@angular/material/expansion'
-import { MatTableModule } from '@angular/material/table'; 
+import { MatTableModule } from '@angular/material/table';
+import { HighScoreComponent } from './high-score/high-score.component'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatTableModule } from '@angular/material/table';
     HoleInfoComponent,
     HolesComponent,
     HoleDetailsComponent,
-    ScoreboardComponent
+    ScoreboardComponent,
+    HighScoreComponent
   ],
   imports: [
     BrowserModule,

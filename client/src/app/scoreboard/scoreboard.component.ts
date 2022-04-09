@@ -4,6 +4,7 @@ import { pluck, map, switchMap, withLatestFrom, shareReplay } from 'rxjs/operato
 import { ScoreboardWrapper } from '../scoreboard'
 import { CourseWrapper } from '../goal';
 import { GroupService } from '../group.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scoreboard',
@@ -49,10 +50,9 @@ export class ScoreboardComponent {
         }));
     })
   )
-
   columnsToDisplay = ['hole', 'par', 'throws',];
 
-  constructor(private http: HttpClient, public groupService: GroupService) { }
+  constructor(private http: HttpClient, public groupService: GroupService, private router: Router) { }
 
 
   submitHighScore(initials: string) {
@@ -65,6 +65,6 @@ export class ScoreboardComponent {
           finalScore: player?.total
         });
       })
-    ).subscribe();
+    ).subscribe(()=>this.router.navigateByUrl('/high-score'));
   }
 }
