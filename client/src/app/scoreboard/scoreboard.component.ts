@@ -25,6 +25,7 @@ export class ScoreboardComponent {
           const final = [];
           for (let player of result.players) {
             const item = {
+              playerId: player.playerID,
               player: player.nickName,
               scores: result.scoreboard[player.playerID]
                 .map(score => ({
@@ -51,7 +52,19 @@ export class ScoreboardComponent {
 
   columnsToDisplay = ['hole', 'par', 'throws',];
 
-  constructor(private http: HttpClient, private groupService: GroupService) { }
+  constructor(private http: HttpClient, public groupService: GroupService) { }
 
 
+  submitHighScore(initials: string) {
+    this.scoreboard$.pipe(
+      withLatestFrom(this.groupService.playerId$),
+      map(([board, playerId]) => board.find(user => user.playerId === playerId)),
+      switchMap(player => {
+        return this.http.post('/api/score/post-score', {
+          initials,
+          finalScore: player?.total
+        });
+      })
+    ).subscribe();
+  }
 }

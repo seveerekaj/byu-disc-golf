@@ -15,14 +15,14 @@
     <mat-label>ENTER THROWS</mat-label>
     <input #scoreInput matInput type="number">
   </mat-form-field>
-    <button mat-raised-button color="accent" (click)="submitScore(+scoreInput.value); scoreInput.value = ''">Submit Score</button>
+    <button mat-raised-button color="primary" (click)="submitScore(+scoreInput.value); scoreInput.value = ''">Submit Score</button>
   </mat-card>
 
   <mat-card>
   <a
     [disabled]="first$ | async"
     mat-raised-button
-    color="accent"
+    color="primary"
     style="margin-right: 10px"
     [routerLink]="(first$ | async) ? null : ['/hole', +hole.holeId - 1]"
   >
@@ -31,7 +31,7 @@
   <a
     [disabled]="last$ | async"
     mat-raised-button
-    color="accent"
+    color="primary"
     [routerLink]="(last$ | async) ? null : ['/hole', +hole.holeId + 1]"
   >
     NEXT HOLE
@@ -42,11 +42,11 @@
   <mat-card>
     <div class="wrap">
     <p><b>GROUP CODE: {{groupService.groupCode$ | async }}</b></p>
-    <a mat-raised-button color="accent" style="margin-right: 10px" routerLink="/scores">SCOREBOARD</a>
+    <a mat-raised-button color="primary" style="margin-right: 10px" routerLink="/scores">SCOREBOARD</a>
   </div>
   </mat-card>
 
-  <google-map [options]="mapOptions" [width]="width" #holeMap>
+  <google-map [options]="mapOptions" [width]="width" #holeMap [center]="center" *ngIf="markers$ | async">
     <map-marker
       #markerElem="mapMarker"
       *ngFor="let marker of markers$ | async"
