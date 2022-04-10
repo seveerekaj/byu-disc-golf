@@ -23,7 +23,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/post-score', function(req, res) {
-    if (req.body["initials"] && req.body["finalScore"]) {
+    if (req.body["initials"] && req.body["finalScore"] != null) {
         scoreService.postScore(req.body["finalScore"], req.body["initials"], function(err) {
             if (err) return res.json(templates.makeFailureMsg(err.message));
             res.json(templates.makeSuccessMsg("successfully posted score of " + req.body["finalScore"]));

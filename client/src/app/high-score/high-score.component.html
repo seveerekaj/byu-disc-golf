@@ -1,0 +1,22 @@
+<h1 [style.margin-left]="'15px'">High Scores</h1>
+<table mat-table [dataSource]="highScores$">
+
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let index = index"> {{index + 1}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="initials">
+    <th mat-header-cell *matHeaderCellDef> Initials </th>
+    <td mat-cell *matCellDef="let entry"> {{entry.initials}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="finalScore">
+    <th mat-header-cell *matHeaderCellDef> Score </th>
+    <td mat-cell *matCellDef="let entry"> {{entry.finalScore}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+
+</table>

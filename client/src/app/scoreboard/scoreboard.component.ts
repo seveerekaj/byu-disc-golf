@@ -4,6 +4,7 @@ import { pluck, map, switchMap, withLatestFrom, shareReplay } from 'rxjs/operato
 import { ScoreboardWrapper } from '../scoreboard'
 import { CourseWrapper } from '../goal';
 import { GroupService } from '../group.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scoreboard',
@@ -25,6 +26,7 @@ export class ScoreboardComponent {
           const final = [];
           for (let player of result.players) {
             const item = {
+              playerId: player.playerID,
               player: player.nickName,
               scores: result.scoreboard[player.playerID]
                 .map(score => ({
@@ -48,10 +50,21 @@ export class ScoreboardComponent {
         }));
     })
   )
-
   columnsToDisplay = ['hole', 'par', 'throws',];
 
-  constructor(private http: HttpClient, private groupService: GroupService) { }
+  constructor(private http: HttpClient, public groupService: GroupService, private router: Router) { }
 
 
+  submitHighScore(initials: string) {
+    this.scoreboard$.pipe(
+      withLatestFrom(this.groupService.playerId$),
+      map(([board, playerId]) => board.find(user => user.playerId === playerId)),
+      switchMap(player => {
+        return this.http.post('/api/score/post-score', {
+          initials,
+          finalScore: player?.total
+        });
+      })
+    ).subscribe(()=>this.router.navigateByUrl('/high-score'));
+  }
 }

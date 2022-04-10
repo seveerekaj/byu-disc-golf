@@ -17,7 +17,7 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   readonly GOAL_URL = '/api/course/hole/';
   goal: any;
-  center: any;
+  center: google.maps.LatLngLiteral = { lat: 40.2518, lng: -111.6493 };
   width!: number;
   destroyed$ = new Subject();
 

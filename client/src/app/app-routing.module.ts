@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HighScoreComponent } from './high-score/high-score.component';
 import { HoleInfoComponent } from './hole-info/hole-info.component';
 import { HolesComponent } from './holes/holes.component';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     component: ScoreboardComponent,
     path: 'scores',
+  },
+  {
+    component: HighScoreComponent,
+    path: 'high-score',
   },
   {
     redirectTo: '/home',

@@ -1,4 +1,4 @@
-<h1>Holes</h1>
+<h1 [style.margin-left]="'15px'">Holes</h1>
 <mat-nav-list>
   <mat-list-item *ngFor='let hole of allHoles$ | async'>
     <a matLine [routerLink]="['/hole/', hole.holeId]">Hole {{hole.holeId}}  •  Par {{hole.par}}</a>

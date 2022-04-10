@@ -95,7 +95,7 @@ var checkNickNameUsedInGroup = function (nickName, groupId, next) {
 }
 
 var createGroupPlayerHelper = function (nickName, groupId, groupCode, next) {
-  var player = new playerModel(null, nickName, getTimeUTCString(), groupId);
+  var player = new playerModel(null, nickName, sharedService.getTimeUTCString(), groupId);
   playerDAO.addGroupPlayer(player, function (err) {
     if (err) {
       console.error(err);
@@ -148,7 +148,7 @@ var postScore = function (playerId, hole, score, next) {
           console.error(err);
           next(new Error("Couldn't check for existing score before posting or updaing score"));
         } else if (existingScore == null) {
-          var newScore = new scoreModel(null, score, hole, playerId, getTimeUTCString());
+          var newScore = new scoreModel(null, score, hole, playerId, sharedService.getTimeUTCString());
           scoreDAO.addScore(newScore, function (err) {
             if (err) {
               console.err(err)
