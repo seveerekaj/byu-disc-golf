@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Goal, GoalWrapper } from '../goal';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 
-import { pluck, switchMap, map, takeUntil, withLatestFrom, shareReplay } from 'rxjs/operators';
+import { pluck, switchMap, map, takeUntil, withLatestFrom, shareReplay, take } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { GroupService } from '../group.service';
 
@@ -105,6 +105,7 @@ export class HoleInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.hole$.pipe(
       pluck('holeId'),
       withLatestFrom(this.groupService.playerId$),
+      take(1),
       switchMap(([holeId, playerId]) => this.http.post('/api/group/post-score', { holeId, playerId, score }))
     ).subscribe();
   }
